@@ -311,9 +311,9 @@ const Index = () => {
         
         {/* Developer Watermark */}
         {mounted && (
-          <div className="fixed top-4 right-4 z-50 glass rounded-full px-3 py-1 animate-fade-in">
+          <div className="fixed top-4 right-6 z-50 glass rounded-full px-3 py-1 animate-fade-in">
             <p className="text-white/70 text-xs font-medium">
-              by <span className="text-white font-semibold">Pawan Ghule</span>
+              by <span className="text-white font-semibold">Pawan Ghule</span> & <span className="text-white font-semibold">Aditya Bachute</span>
             </p>
           </div>
         )}
