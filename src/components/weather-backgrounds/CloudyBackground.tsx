@@ -3,9 +3,17 @@ export const CloudyBackground = () => {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Main Cloudy Gradient */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 dark:hidden"
         style={{
           background: 'linear-gradient(135deg, #708090 0%, #B0C4DE 50%, #DCDCDC 100%)'
+        }}
+      />
+      
+      {/* Dark Mode Cloudy Gradient */}
+      <div 
+        className="absolute inset-0 hidden dark:block"
+        style={{
+          background: 'linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%)'
         }}
       />
       
@@ -15,7 +23,7 @@ export const CloudyBackground = () => {
         {[...Array(6)].map((_, i) => (
           <div
             key={`bg-${i}`}
-            className="absolute bg-white/10 rounded-full animate-cloud-layer"
+            className="absolute bg-white/10 dark:bg-white/5 rounded-full animate-cloud-layer"
             style={{
               width: `${120 + Math.random() * 100}px`,
               height: `${60 + Math.random() * 40}px`,
@@ -31,7 +39,7 @@ export const CloudyBackground = () => {
         {[...Array(4)].map((_, i) => (
           <div
             key={`fg-${i}`}
-            className="absolute bg-white/20 rounded-full animate-cloud-drift"
+            className="absolute bg-white/20 dark:bg-white/8 rounded-full animate-cloud-drift"
             style={{
               width: `${150 + Math.random() * 80}px`,
               height: `${70 + Math.random() * 30}px`,

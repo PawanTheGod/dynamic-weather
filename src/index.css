@@ -87,10 +87,12 @@
   }
 
   .dark {
+    /* Dark Mode Glass Morphism */
     --glass-bg: 15 23% 15%;
     --glass-border: 15 23% 25%;
     --glass-shadow: 0 0% 0%;
     
+    /* Dark Mode Core Colors */
     --background: 15 23% 8%;
     --foreground: 0 0% 98%;
     
@@ -118,40 +120,81 @@
     --border: 15 23% 25%;
     --input: 15 23% 25%;
     --ring: 222 87% 66%;
+    
+    /* Dark Mode Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 25% 15%) 0%, hsl(240 30% 20%) 100%);
+    --gradient-clear: linear-gradient(135deg, hsl(220 40% 25%) 0%, hsl(240 35% 30%) 50%, hsl(260 40% 35%) 100%);
+    --gradient-cloudy: linear-gradient(135deg, hsl(215 25% 20%) 0%, hsl(220 20% 25%) 50%, hsl(225 25% 30%) 100%);
+    --gradient-rainy: linear-gradient(135deg, hsl(220 30% 15%) 0%, hsl(215 35% 20%) 50%, hsl(210 40% 25%) 100%);
+    --gradient-snowy: linear-gradient(135deg, hsl(220 20% 25%) 0%, hsl(210 25% 30%) 50%, hsl(200 30% 35%) 100%);
+    --gradient-storm: linear-gradient(135deg, hsl(255 48% 10%) 0%, hsl(220 13% 8%) 50%, hsl(240 20% 5%) 100%);
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     background: var(--gradient-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .dark body {
+    background: var(--gradient-primary);
   }
 }
 
 @layer components {
   /* Glass Morphism Components */
   .glass {
-    @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg;
+    @apply backdrop-blur-xl border shadow-lg;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark .glass {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
   }
   
   .glass-strong {
-    @apply bg-white/20 backdrop-blur-2xl border border-white/30 shadow-xl;
+    @apply backdrop-blur-2xl border shadow-xl;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .dark .glass-strong {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
   }
   
   .glass-hero {
-    @apply bg-white/15 backdrop-blur-3xl border border-white/25;
+    @apply backdrop-blur-3xl border;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
     box-shadow: var(--shadow-hero);
+  }
+  
+  .dark .glass-hero {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
   }
   
   /* Weather Card Variants */
   .weather-card {
-    @apply glass-hero rounded-3xl p-8 text-white relative overflow-hidden;
+    @apply glass-hero rounded-3xl p-8 relative overflow-hidden;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    color: white;
+  }
+  
+  .dark .weather-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    color: white;
   }
   
   .weather-card::before {
@@ -162,13 +205,24 @@
   }
   
   .stats-card {
-    @apply glass rounded-2xl p-6 text-white text-center relative overflow-hidden transition-all duration-300;
+    @apply glass rounded-2xl p-6 text-center relative overflow-hidden transition-all duration-300;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    color: white;
+  }
+  
+  .dark .stats-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+    color: white;
   }
   
   .stats-card:hover {
-    @apply -translate-y-1 shadow-2xl bg-white/20;
+    @apply -translate-y-1 shadow-2xl;
     transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark .stats-card:hover {
+    background: rgba(255, 255, 255, 0.1);
   }
   
   .stats-card::before {
@@ -183,16 +237,57 @@
   
   /* Button Variants */
   .btn-glass {
-    @apply glass rounded-xl px-6 py-3 text-white/80 hover:text-white transition-all duration-300 hover:bg-white/20 hover:-translate-y-0.5;
+    @apply glass rounded-xl px-6 py-3 transition-all duration-300 hover:-translate-y-0.5;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .btn-glass:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark .btn-glass:hover {
+    background: rgba(255, 255, 255, 0.1);
   }
   
   .btn-primary {
-    @apply bg-white rounded-xl px-6 py-3 text-primary font-semibold transition-all duration-300 hover:bg-white/90 hover:-translate-y-1 shadow-lg hover:shadow-xl;
+    @apply rounded-xl px-6 py-3 font-semibold transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl;
+    background: white;
+    color: hsl(var(--primary));
+  }
+  
+  .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .dark .btn-primary {
+    background: rgba(255, 255, 255, 0.9);
+    color: hsl(var(--primary));
+  }
+  
+  .dark .btn-primary:hover {
+    background: white;
   }
   
   .btn-hero {
-    @apply bg-white/20 hover:bg-white/30 border border-white/30 rounded-2xl px-8 py-4 text-white font-semibold transition-all duration-300 hover:-translate-y-1;
+    @apply border rounded-2xl px-8 py-4 font-semibold transition-all duration-300 hover:-translate-y-1;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
     box-shadow: var(--shadow-glass);
+  }
+  
+  .btn-hero:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .dark .btn-hero {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .dark .btn-hero:hover {
+    background: rgba(255, 255, 255, 0.15);
   }
 }
 
@@ -254,6 +349,10 @@
   .animate-gradient-shift {
     animation: gradientShift 8s ease-in-out infinite;
     background-size: 200% 200%;
+  }
+  
+  .animate-social-bounce {
+    animation: socialBounce 0.6s ease-out;
   }
   
   /* Weather Background Classes */
@@ -392,4 +491,10 @@
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
+}
+
+@keyframes socialBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }

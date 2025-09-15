@@ -41,7 +41,7 @@ export const WeatherHeader = ({ onSearch, onLocationClick, isDark, onThemeToggle
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/60 w-5 h-5" />
             <Input
               type="text"
-              placeholder="Search for any city..."
+              placeholder="Search for any city (e.g., London, Tokyo, New York)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 pr-4 py-3 bg-white/10 border-white/20 text-white placeholder:text-white/60 rounded-2xl focus:bg-white/20 focus:border-white/40 transition-all"
@@ -54,18 +54,24 @@ export const WeatherHeader = ({ onSearch, onLocationClick, isDark, onThemeToggle
           <Button
             onClick={onLocationClick}
             className="btn-primary flex items-center gap-2"
+            title="Detect your location automatically"
           >
             <MapPin className="w-4 h-4" />
-            <span className="hidden sm:inline">My Location</span>
+            <span className="hidden sm:inline">Auto-Detect</span>
           </Button>
           
           <Button
             onClick={onThemeToggle}
             variant="ghost"
             size="icon"
-            className="glass w-11 h-11 text-white hover:bg-white/20"
+            className="glass w-11 h-11 text-white hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300"
+            title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
-            {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            {isDark ? (
+              <Sun className="w-5 h-5 animate-spin" style={{ animationDuration: '2s' }} />
+            ) : (
+              <Moon className="w-5 h-5" />
+            )}
           </Button>
           
           <Button

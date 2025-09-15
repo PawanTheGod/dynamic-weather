@@ -20,7 +20,7 @@ export const WeatherCard = ({ weather }: WeatherCardProps) => {
   return (
     <div className="weather-card animate-fade-in">
       {/* Floating background element */}
-      <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/5 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/5 dark:bg-white/10 rounded-full blur-3xl animate-float"></div>
       
       {/* Header */}
       <div className="relative z-10 text-center mb-8">

@@ -23,14 +23,22 @@ export const ThunderstormBackground = () => {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Main Storm Gradient */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 dark:hidden"
         style={{
           background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'
         }}
       />
       
+      {/* Dark Mode Storm Gradient */}
+      <div 
+        className="absolute inset-0 hidden dark:block"
+        style={{
+          background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)'
+        }}
+      />
+      
       {/* Dark Storm Clouds */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-800/30 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 dark:from-gray-950/70 via-gray-800/30 dark:via-gray-900/50 to-transparent"></div>
       
       {/* Lightning Bolts */}
       <div className="absolute inset-0">
@@ -58,7 +66,7 @@ export const ThunderstormBackground = () => {
         {[...Array(60)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-0.5 bg-gradient-to-b from-gray-300/40 to-gray-500/60 animate-rain-drop"
+            className="absolute w-0.5 bg-gradient-to-b from-gray-300/40 dark:from-gray-400/60 to-gray-500/60 dark:to-gray-600/80 animate-rain-drop"
             style={{
               left: `${Math.random() * 100}%`,
               height: `${20 + Math.random() * 30}px`,
@@ -74,7 +82,7 @@ export const ThunderstormBackground = () => {
         {[...Array(3)].map((_, i) => (
           <div
             key={i}
-            className="absolute bg-gray-800/20 rounded-full animate-cloud-layer"
+            className="absolute bg-gray-800/20 dark:bg-gray-900/40 rounded-full animate-cloud-layer"
             style={{
               width: `${200 + Math.random() * 150}px`,
               height: `${80 + Math.random() * 60}px`,

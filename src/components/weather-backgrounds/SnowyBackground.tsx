@@ -25,14 +25,22 @@ export const SnowyBackground = () => {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Main Snowy Gradient */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 dark:hidden"
         style={{
           background: 'linear-gradient(135deg, #E6F3FF 0%, #F0F8FF 50%, #FFFFFF 100%)'
         }}
       />
       
+      {/* Dark Mode Snowy Gradient */}
+      <div 
+        className="absolute inset-0 hidden dark:block"
+        style={{
+          background: 'linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #4a6fa5 100%)'
+        }}
+      />
+      
       {/* Cold Atmosphere */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-100/20 via-transparent to-blue-50/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-100/20 dark:from-blue-900/30 via-transparent to-blue-50/30 dark:to-blue-800/20"></div>
       
       {/* Snowflakes */}
       <div className="absolute inset-0">

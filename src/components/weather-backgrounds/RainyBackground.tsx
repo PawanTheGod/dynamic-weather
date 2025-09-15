@@ -18,21 +18,29 @@ export const RainyBackground = () => {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Main Rainy Gradient */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 dark:hidden"
         style={{
           background: 'linear-gradient(135deg, #2C3E50 0%, #34495E 50%, #5D6D7E 100%)'
         }}
       />
       
+      {/* Dark Mode Rainy Gradient */}
+      <div 
+        className="absolute inset-0 hidden dark:block"
+        style={{
+          background: 'linear-gradient(135deg, #1a252f 0%, #2c3e50 50%, #34495e 100%)'
+        }}
+      />
+      
       {/* Dark Cloud Layer */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-800/30 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-800/30 dark:from-gray-900/50 via-transparent to-transparent"></div>
       
       {/* Rain Drops */}
       <div className="absolute inset-0">
         {rainDrops.map((drop) => (
           <div
             key={drop.id}
-            className="absolute w-0.5 bg-gradient-to-b from-blue-200/60 to-blue-400/80 animate-rain-drop"
+            className="absolute w-0.5 bg-gradient-to-b from-blue-200/60 dark:from-blue-300/40 to-blue-400/80 dark:to-blue-500/60 animate-rain-drop"
             style={{
               left: `${drop.left}%`,
               height: `${15 + Math.random() * 20}px`,
