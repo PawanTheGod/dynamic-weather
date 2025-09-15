@@ -6,7 +6,7 @@ interface FooterProps {
 }
 
 export const Footer = ({ isDark }: FooterProps) => {
-  const socialLinks = [
+  const pawanSocialLinks = [
     {
       name: "LinkedIn",
       icon: Linkedin,
@@ -26,7 +26,7 @@ export const Footer = ({ isDark }: FooterProps) => {
     {
       name: "WhatsApp",
       icon: MessageCircle,
-      url: "https://wa.me/+918788947952", // Replace with your actual WhatsApp number
+      url: "https://wa.me/+918788947952",
       color: "hover:text-green-400", 
       bgColor: "hover:bg-green-400/10",
       description: "Quick Chat"
@@ -35,6 +35,33 @@ export const Footer = ({ isDark }: FooterProps) => {
       name: "GitHub",
       icon: Github,
       url: "https://github.com/PawanTheGod",
+      color: "hover:text-gray-300",
+      bgColor: "hover:bg-gray-400/10",
+      description: "Code Portfolio"
+    }
+  ];
+
+  const adityaSocialLinks = [
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      url: "https://www.linkedin.com/in/aditya-bachute-680570302",
+      color: "hover:text-blue-400",
+      bgColor: "hover:bg-blue-400/10",
+      description: "Professional Network"
+    },
+    {
+      name: "Instagram", 
+      icon: Instagram,
+      url: "https://www.instagram.com/aditya_bachute",
+      color: "hover:text-pink-400",
+      bgColor: "hover:bg-pink-400/10",
+      description: "Life & Moments"
+    },
+    {
+      name: "GitHub",
+      icon: Github,
+      url: "https://github.com/AdiB1619",
       color: "hover:text-gray-300",
       bgColor: "hover:bg-gray-400/10",
       description: "Code Portfolio"
@@ -58,50 +85,100 @@ export const Footer = ({ isDark }: FooterProps) => {
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="glass-strong rounded-3xl p-8">
           {/* Main Footer Content */}
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col gap-8">
             
-            {/* Developer Attribution */}
-            <div className="flex items-center gap-4 group cursor-pointer transition-all duration-300 hover:scale-105">
-              <div className="flex items-center gap-2 text-white">
-                <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
-                  <Code className="w-5 h-5 text-white" />
+            {/* Developers Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              
+              {/* Pawan's Section */}
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center gap-4 group cursor-pointer transition-all duration-300 hover:scale-105">
+                  <div className="flex items-center gap-2 text-white">
+                    <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
+                      <Code className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-lg font-semibold">
+                        Crafted with <Heart className="w-4 h-4 text-red-400 inline mx-1 animate-pulse" /> by
+                      </p>
+                      <p className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
+                        Pawan Ghule
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-lg font-semibold">
-                    Crafted with <Heart className="w-4 h-4 text-red-400 inline mx-1 animate-pulse" /> by
+                
+                {/* Pawan's Social Links */}
+                <div className="flex items-center gap-3">
+                  <p className="text-white/70 text-sm hidden sm:block mr-4">
+                    Connect with Pawan:
                   </p>
-                  <p className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
-                    Pawan Ghule
-                  </p>
+                  {pawanSocialLinks.map((link) => (
+                    <Button
+                      key={`pawan-${link.name}`}
+                      variant="ghost"
+                      size="icon"
+                      className={`glass w-12 h-12 text-white/70 transition-all duration-300 ${link.color} ${link.bgColor} hover:scale-110 active:scale-95 group`}
+                      onClick={() => {
+                        window.open(link.url, '_blank');
+                        const button = document.activeElement as HTMLElement;
+                        button?.classList.add('animate-social-bounce');
+                        setTimeout(() => {
+                          button?.classList.remove('animate-social-bounce');
+                        }, 600);
+                      }}
+                      title={`${link.description} - Connect with Pawan on ${link.name}`}
+                    >
+                      <link.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    </Button>
+                  ))}
                 </div>
               </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-3">
-              <p className="text-white/70 text-sm hidden sm:block mr-4">
-                Connect with me:
-              </p>
-              {socialLinks.map((link) => (
-                <Button
-                  key={link.name}
-                  variant="ghost"
-                  size="icon"
-                  className={`glass w-12 h-12 text-white/70 transition-all duration-300 ${link.color} ${link.bgColor} hover:scale-110 active:scale-95 group`}
-                  onClick={() => {
-                    window.open(link.url, '_blank');
-                    // Add subtle click animation
-                    const button = document.activeElement as HTMLElement;
-                    button?.classList.add('animate-social-bounce');
-                    setTimeout(() => {
-                      button?.classList.remove('animate-social-bounce');
-                    }, 600);
-                  }}
-                  title={`${link.description} - Connect on ${link.name}`}
-                >
-                  <link.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                </Button>
-              ))}
+              
+              {/* Aditya's Section */}
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center gap-4 group cursor-pointer transition-all duration-300 hover:scale-105">
+                  <div className="flex items-center gap-2 text-white">
+                    <div className="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl group-hover:shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
+                      <Code className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-lg font-semibold">
+                        Developed with <Heart className="w-4 h-4 text-red-400 inline mx-1 animate-pulse" /> by
+                      </p>
+                      <p className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
+                        Aditya Bachute
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Aditya's Social Links */}
+                <div className="flex items-center gap-3">
+                  <p className="text-white/70 text-sm hidden sm:block mr-4">
+                    Connect with Aditya:
+                  </p>
+                  {adityaSocialLinks.map((link) => (
+                    <Button
+                      key={`aditya-${link.name}`}
+                      variant="ghost"
+                      size="icon"
+                      className={`glass w-12 h-12 text-white/70 transition-all duration-300 ${link.color} ${link.bgColor} hover:scale-110 active:scale-95 group`}
+                      onClick={() => {
+                        window.open(link.url, '_blank');
+                        const button = document.activeElement as HTMLElement;
+                        button?.classList.add('animate-social-bounce');
+                        setTimeout(() => {
+                          button?.classList.remove('animate-social-bounce');
+                        }, 600);
+                      }}
+                      title={`${link.description} - Connect with Aditya on ${link.name}`}
+                    >
+                      <link.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    </Button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -132,11 +209,13 @@ export const Footer = ({ isDark }: FooterProps) => {
 
         {/* Bottom Signature */}
         <div className="mt-4 text-center">
-          <p className="text-white/40 text-xs flex items-center justify-center gap-2">
+          <p className="text-white/40 text-xs flex items-center justify-center gap-2 flex-wrap">
             <Code className="w-3 h-3" />
             "Bringing beautiful weather experiences to life"
             <span className="mx-2">-</span>
             <span className="font-semibold text-white/60">Pawan Ghule</span>
+            <span className="mx-1">&</span>
+            <span className="font-semibold text-white/60">Aditya Bachute</span>
           </p>
         </div>
       </div>
