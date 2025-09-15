@@ -99,7 +99,7 @@ export const Footer = ({ isDark }: FooterProps) => {
                     </div>
                     <div>
                       <p className="text-lg font-semibold">
-                        Crafted with <Heart className="w-4 h-4 text-red-400 inline mx-1 animate-pulse" /> by
+                        Powered with <Heart className="w-4 h-4 text-red-400 inline mx-1 animate-pulse" /> by
                       </p>
                       <p className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
                         Pawan Ghule
@@ -144,7 +144,7 @@ export const Footer = ({ isDark }: FooterProps) => {
                     </div>
                     <div>
                       <p className="text-lg font-semibold">
-                        Developed with <Heart className="w-4 h-4 text-red-400 inline mx-1 animate-pulse" /> by
+                        Powered with <Heart className="w-4 h-4 text-red-400 inline mx-1 animate-pulse" /> by
                       </p>
                       <p className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
                         Aditya Bachute
